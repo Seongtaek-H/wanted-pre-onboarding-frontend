@@ -15,10 +15,11 @@ export default function List({ props, fetchData }) {
     });
   };
 
-  const update = () => {
-    updateTodo(id, updateText, updateIsCompleted).then(() => {
+  const update = async () => {
+    await updateTodo(id, updateText, updateIsCompleted).then(() => {
       fetchData();
     });
+    setUpdateStatus(false);
   };
 
   const onChangeText = (e) => setUpdateText(e.target.value);
