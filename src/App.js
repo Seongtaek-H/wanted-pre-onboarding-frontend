@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Main from './pages/main';
+import ToDo from './pages/todo';
+import styled from 'styled-components';
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Main />,
+  },
+  { path: '/todo', element: <ToDo /> },
+]);
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <RouterProvider router={router} />
+    </Container>
   );
 }
 
-export default App;
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
